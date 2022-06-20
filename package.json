@@ -1,4 +1,5 @@
 {
+  "homepage": "https://wuharry.github.io/Instagram",
   "name": "my-ig",
   "version": "0.1.0",
   "private": true,
@@ -31,7 +32,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettier": "prettier -w ./src",
-    "server": "json-server --watch db.json --port 3004 -d 1500"
+    "server": "json-server --watch db.json --port 3004 -d 1500",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +59,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "tailwindcss": "^3.1.3"
   }
 }
