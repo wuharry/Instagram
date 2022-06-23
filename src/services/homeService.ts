@@ -23,7 +23,8 @@ type IGPost = {
   export const homeApi = createApi({
     // 這個api是從基本路徑加上功能(這邊有兩個功能元件，所以可以導入兩個不同資料)去導入資料導入資料
     reducerPath: "homeApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004/" }) 
+    baseQuery: fetchBaseQuery({ baseUrl: window.location.origin }) 
+    // baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004/" }),
     // 設定根路徑(所有的路徑都要經過的路徑(起點))
     ,
     endpoints: (builder) => ({

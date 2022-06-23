@@ -2,15 +2,36 @@ import IGHeader from "components/IGHeader"; //上方標題組件
 import IGContainer from "components/IGContainer"; //內容框架組件
 import IGUser from "components/IGUser"; //使用者球組件
 import { useGetIGPostsQuery } from "services/homeService";
+
 import Loading from "components/Loading";
 //這裡是Home底下的component跟上方是公共component不同
 import IGStory from "./component/IGStory"; //動態球組件
 import IGPost from "./component/IGPost"; //po文組件
 import IGProfile from "./component/IGProfile"; //好友小追蹤頁面表組件
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const IGPostList: React.FC = () => {
   // 功能為接收api資料，並判斷web是否在loding，並把資料已map的方式套用IGPOST來達到多個貼文效果
   const { data, isLoading } = useGetIGPostsQuery("all");
+  const [PostData, setPostData] = useState([]);
+  //promise的運用
+  //用axios申請資料(位置在最外層public資料夾)
+  async function getData() {
+    try {
+      const get = await axios.get("./db.json");
+      setPostData(get.data.posts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getData();
+  },[]);
+
+
+  // console.log(PostData);
+
   //引入資料
   return (
     <>
@@ -20,7 +41,7 @@ const IGPostList: React.FC = () => {
         </div>
       )}
       {!isLoading &&
-        data?.map((item) => {
+       PostData?.map((item) => {
           const {
             id,
             location,
