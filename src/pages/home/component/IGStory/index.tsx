@@ -20,7 +20,9 @@ const IGStory: React.FC = () => {
   useEffect(() => {
     getData();
   },[]);
-    
+
+
+  
   return (
     <div className="w-full h-[110px] box-border flex items-center overflow-x-auto overflow-y-hidden shadow-md no-scrollbar lg:my-8">
       {/* <Item name='bruce_1234' avatar='/images/avatars/a1.png' />  頭項測試*/}
@@ -31,6 +33,8 @@ const IGStory: React.FC = () => {
         </div>
       )}
 
+
+        
       {!isLoading &&
         PostData?.map((item) => {
           // 如果data(來自後端/目前不是)為非空值'?'，做map
