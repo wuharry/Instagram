@@ -19,8 +19,12 @@ const IGPostList: React.FC = () => {
   //用axios申請資料(位置在最外層public資料夾)
   async function getData() {
     try {
-      const get = await axios.get("./db.json");
-      setPostData(get.data.posts);
+      fetch("./db.json")
+      .then((res)=> res.json())
+      .then((data)=>{
+        // console.log(data.posts)
+       setPostData(data.posts)
+      })
     } catch (error) {
       console.log(error);
     }

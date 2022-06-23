@@ -11,8 +11,13 @@ const IGStory: React.FC = () => {
   const [PostData, setPostData] = useState([]);
   async function getData() {
     try {
-      const get = await axios.get("./db.json");
-      setPostData(get.data.stories);
+        fetch("./db.json")
+        .then((res)=> res.json())
+        .then((data)=>{
+          // console.log(data.posts)
+         setPostData(data.stories)
+        })
+     
     } catch (error) {
       console.log(error);
     }
